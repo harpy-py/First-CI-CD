@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: app/v1
+metadata:
+  name: devProj
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devProj
+  template:
+    metadata:
+      labels:
+        app: devProj
+    spec:
+      containers:
+      - name: devProj
+        image: pazienza/first-ci-cdd
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
